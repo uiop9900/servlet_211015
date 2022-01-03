@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Get Method</title>
+</head>
+<body>
+	<h1>Get Method</h1>
+	
+	<p>
+		<a href="/servlet/ex03">링크 태그</a>
+	</p>
+	
+	<!-- ?쿼리 파라미터 -->
+	<!--  server는 html로 들어가서 아래의 <a>를 누르면 서블릿으로 넘어간다. -->
+	<!-- 이걸 클릭하면 아래의 servlet으로 data를 넘기고 그 data는 requset에 담긴다. 그래서 아래의 ㅣ서블릿은 request를 이용해서 함수짠다. -->
+	<p>
+		<a href="/servlet/ex03?user_id=jia9510">아이디를 넘깁니다.</a>
+	</p>
+	
+	<p>
+		<a href="/servlet/ex03?user_id=jia9510&name=jiaLee">아이디와 이름을 넘깁니다.</a>
+	</p>
+	
+	<p>
+		<a href="/servlet/ex03?user_id=jia9510&name=jiaLee&age=28">아이디와 이름과 나이를 넘깁니다.</a>
+	</p>
+</body>
+</html>
+
