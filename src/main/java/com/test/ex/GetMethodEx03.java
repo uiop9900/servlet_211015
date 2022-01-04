@@ -35,7 +35,7 @@ public class GetMethodEx03 extends HttpServlet { // request -> Servlet -> respon
 		// {"user_id":"jia9510", "name":"jiaLee", "age":28}
 		// 모양을 맞춰주면 JSON으로 인식함. " -> \"
 		out.print("{\"user_id\":\"" + userId + "\",\"name\":\"" + name + "\",\"age\":" + age + "}");
-		
+		out.print("수정하겠습니다.");
 		
 	}
 
