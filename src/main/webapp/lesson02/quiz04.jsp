@@ -22,7 +22,7 @@
 				<select class="form-control col-1 mr-3" name="calculation">
 					<option>+</option>
 					<option>-</option>
-					<option>*</option>
+					<option>X</option>
 					<option>/</option>
 				</select>
 				

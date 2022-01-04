@@ -18,11 +18,23 @@
 	int number2 = Integer.parseInt(request.getParameter("number2"));
 	
 	String calculation = request.getParameter("calculation");
+	 
+	double total = 0.0;
 	
+	if (calculation.equals("+")){
+		total = number1 + number2;
+	} else if (calculation.equals("-")){
+		total = number1 - number2;
+	} else if (calculation.equals("X")) {
+		total = number1 * number2;
+	} else {
+		total = (double)number1 / number2;
+	}
 	
 %>
-
-	<h2>계산결과</h2>
-	<div class="display-3"><%= number1 %></div>
+	<div class="container">
+		<h2>계산결과</h2>
+		<div class="display-3"><%= number1 %> <%= calculation %> <%= number2 %> = <span class="text-info"><%= total %></span> </div>
+	</div>
 </body>
 </html>
