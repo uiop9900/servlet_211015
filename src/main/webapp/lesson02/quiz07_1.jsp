@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>배탈의 민족</title>
 
-<!-- bootstrap 추가! -->
+	<!-- bootstrap 추가! -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -31,8 +31,8 @@ List<Map<String, Object>> list = new ArrayList<>();
 	map = new HashMap<String, Object>() {{ put("name", "반올림피자"); put("menu", "피자"); put("point", 4.3); } };
 	list.add(map);
 	
-	String menu = request.getParameter("munu");
-	String exclude = request.getParameter("exclude");
+	String menu = request.getParameter("menu");
+	Object underFour = request.getParameter("underFour");
 	
 %>
 
@@ -47,32 +47,30 @@ List<Map<String, Object>> list = new ArrayList<>();
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					for (int i = 0; i < list.size(); i++) {
-						if (menu.equals(list.get(i).get("menu")){
-					
-				%>
-				<tr>
-					<td>
-					<%
-						out.print(list.get(i).get("menu"));
-					%>
-					</td>
-					
-					<td>
-					<%
-						out.print(list.get(i).get("name"));
-					%>
-					</td>
-					<td>
-					<% 
-						out.print(list.get(i).get("point")); }
-					%>
-					</td>
-				</tr>
-				<%
-					}
-				%>
+				<% 
+		 			for (int i = 0; i < list.size(); i++){
+		 				if (underFour != null && underFour.equals("excludeUnderFour")) {
+		 					double point = (double)list.get(i).get("point");
+							if (point < 4.0){
+								list.remove(i);
+							}
+		 				} else {
+		 					
+		 				}
+		 				
+		 				if (list.get(i).get("menu").equals(menu)) {
+				%>			
+					<tr>
+						<td><%= list.get(i).get("menu") %></td>
+						<td><%= list.get(i).get("name") %></td>
+						<td><%= list.get(i).get("point")%></td>
+					</tr>
+				
+				<% 		
+		 				}
+		 			}
+		 		%>
+				
 			</tbody>
 		</table>
 	</div>
