@@ -14,27 +14,54 @@
 </head>
 <body>
 <%
-	int number1 = Integer.parseInt(request.getParameter("number1"));
+	int number1 = Integer.parseInt(request.getParameter("number1")); // 넘겨주지 않으면 null값이 될수있음 -> int로 변환과정에서 오류가 생길수있다.
 	int number2 = Integer.parseInt(request.getParameter("number2"));
 	
-	String calculation = request.getParameter("calculation");
+	String operator = request.getParameter("operator");
 	 
-	double total = 0.0;
+	double result = 0.0; // 여기는 기본이 0임.
+	String printOperator = null; // Sring같이 시작되는 type은 null값을 기본으로 넣는다.
 	
-	if (calculation.equals("+")){
-		total = number1 + number2;
-	} else if (calculation.equals("-")){
-		total = number1 - number2;
-	} else if (calculation.equals("X")) {
-		total = number1 * number2;
-	} else {
-		total = (double)number1 / number2;
+	//switch문으로 해보기
+	switch(operator) {
+	case "plus":
+		result = number1 + number2;
+		printOperator = "+";
+		break; // break 필수임, 하지않으면 아래의 모든 코드를 실행한다.
+	case "minus":
+		result = number1 - number2;
+		printOperator = "-";
+		break;
+	case "multiple":
+		result = number1 * number2;
+		printOperator = "X";
+		break;
+	case "devide"://else == default 
+		result = (double)number1 / number2;
+		printOperator = "/";
+		break;
 	}
+	
+	// if문
+	/*if (operator.equals("+")){
+		result = number1 + number2;
+	} else if (operator.equals("-")){
+		result = number1 - number2;
+	} else if (operator.equals("X")) {
+		result = number1 * number2;
+	} else {
+		result = (double)number1 / number2;
+	}*/
 	
 %>
 	<div class="container">
-		<h2>계산결과</h2>
-		<div class="display-3"><%= number1 %> <%= calculation %> <%= number2 %> = <span class="text-info"><%= total %></span> </div>
+		<h1>계산결과</h1>
+		<div class="display-3">
+		<% // 이렇게 바로 자바를 통해서 out으로 출력이 가능하다
+			out.print(number1 + " " + printOperator + " " + number2 + " = ");
+		%>
+		<span class="text-info"><%= result %></span> 
+		</div>
 	</div>
 </body>
 </html>
