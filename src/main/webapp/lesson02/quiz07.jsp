@@ -18,7 +18,7 @@
 		<form method="post" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex align-items-end">
 				<input type="text" class="col-2 mr-2 form-control" name="menu" placeholder="menu">
-				<label><input type="checkbox" name="underFour" value="excludeUnderFour"> 4점 이하 제외</label>
+				<label><input type="checkbox" name="underFour" value="true"> 4점 이하 제외</label>
 			</div>
 			<input type="submit" class="btn btn-success mt-3" value="검색">
 		</form>

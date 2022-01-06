@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
+    
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +19,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-<%
+<% // object로 선언하면 다운캐스팅을 통해 (instaneceof) value의 진짜 값을 찾아서 선언해야한다. (이 문제에서는 double형)
 List<Map<String, Object>> list = new ArrayList<>();
 	Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
 	list.add(map);
@@ -31,9 +36,7 @@ List<Map<String, Object>> list = new ArrayList<>();
 	map = new HashMap<String, Object>() {{ put("name", "반올림피자"); put("menu", "피자"); put("point", 4.3); } };
 	list.add(map);
 	
-	String menu = request.getParameter("menu");
-	Object underFour = request.getParameter("underFour");
-	
+
 %>
 
 	<div class="container">
@@ -48,27 +51,29 @@ List<Map<String, Object>> list = new ArrayList<>();
 			</thead>
 			<tbody>
 				<% 
-		 			for (int i = 0; i < list.size(); i++){
-		 				if (underFour != null && underFour.equals("excludeUnderFour")) {
-		 					double point = (double)list.get(i).get("point");
-							if (point < 4.0){
-								list.remove(i);
-							}
-		 				} else {
-		 					
-		 				}
-		 				
-		 				if (list.get(i).get("menu").equals(menu)) {
-				%>			
-					<tr>
-						<td><%= list.get(i).get("menu") %></td>
-						<td><%= list.get(i).get("name") %></td>
-						<td><%= list.get(i).get("point")%></td>
-					</tr>
 				
+				String keyword = request.getParameter("menu");
+				String underFour = request.getParameter("underFour"); // checkbox이지만 하나의 value만 가져오기때문에 그냥 getParameter로 해도된다.
+				// 체크 안함: null, 체크함 :  "true"
+				boolean exclude = underFour != null; // 체크됨(4점 이하 제외) -> "true"값이 있으므로 null값이 아니다. -> 즉 exclude는 체크를 했는지에 대한 변수
+				
+				for (Map<String, Object> item : list) { // 아이템이 있는 만큼 하나의 아이템을 출력
+					//메뉴 명이 같을 때는 무조건 출력한다.
+					if (keyword.equals(item.get("menu"))) { //검색어가 같을 경우에만 아래에서 출력한다.
+						if (exclude && (double)item.get("point") < 4.0) { //skip 조건: exclude가 체크됨 && 4점 이하 , object이기때문에 캐스팅을 통해 원래 형태로 바꿔줘야한다.
+							continue;
+						}
+				
+				%>			
+						<tr>
+							<td><%= item.get("menu") %></td>
+							<td><%= item.get("name") %></td>
+							<td><%= item.get("point") %></td>
+						</tr>
+					
 				<% 		
-		 				}
-		 			}
+						}
+			 		}
 		 		%>
 				
 			</tbody>
