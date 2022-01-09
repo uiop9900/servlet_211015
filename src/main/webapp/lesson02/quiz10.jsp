@@ -20,10 +20,15 @@
 	int day = today.get(Calendar.DAY_OF_MONTH);
 	int lastDay = today.getActualMaximum(Calendar.DATE);
 	int startDay = today.getActualMinimum(Calendar.DATE);
+	int month = today.get(Calendar.MONTH);
 	
-	out.print(day);
-	out.print(lastDay);
-	out.print(startDay);
+	today.set(2022,1,1); // 요일
+	int week = today.get(Calendar.WEEK_OF_MONTH);
+	
+	//out.print(day + "<br>");
+	//out.print(lastDay + "<br>");
+	//out.print(startDay + "<br>");
+	//out.print(month + "<br>");
 
 %>
 	<div class="container">
@@ -41,6 +46,29 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%
+					for (int i = 1; i < week; i++){
+						out.print("<br>");
+					}
+					for (int i = 1; i <= lastDay; i++) {
+						
+						if (week % 7 == 0 ){
+							out.print("<br>");
+						}
+				%>
+				<tr>
+					<td><%= i %></td>
+					<td><%= i %></td>
+					<td><%= i %></td>
+					<td><%= i %></td>
+					<td><%= i %></td>
+					<td><%= i %></td>
+					<td><%= i %></td>
+				</tr>
+				
+				<%
+					}
+				%>
 			</tbody>
 		</table>
 	</div>
