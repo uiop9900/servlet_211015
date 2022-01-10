@@ -92,10 +92,7 @@ List<Map<String, Object>> musicList = new ArrayList<>();
 	</div>
 </section>
 
-
-
-
-
+<%-- 전체 리스트 --%>
 <section class="mt-3">
 	<h4>곡 목록</h4>
 	<table class="table text-center">

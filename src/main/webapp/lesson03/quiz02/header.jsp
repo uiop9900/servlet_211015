@@ -5,12 +5,10 @@
 		<h3 class="col-2"><a href="/lesson03/quiz02/template.jsp" class="text-success">Melong</a></h3>
 		
 		<div class="col-10">
-			<div class="search-bar">
-				<div class="input-group">
-					<div class="d-flex">
-						<input type="text" class="form-control" name="search">
-						<input type="submit" class="btn btn-info" value="검색">
-					</div>
+			<div class="search-bar input-group">
+				<div class="d-flex w-100">
+					<input type="text" class="form-control col-6" name="search">
+					<input type="submit" class="btn btn-info" value="검색">
 				</div>
 			</div>
 		</div>

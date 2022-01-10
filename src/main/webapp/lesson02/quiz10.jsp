@@ -23,8 +23,9 @@
 	int month = today.get(Calendar.MONTH);
 	
 	today.set(2022,1,1); // 요일
-	int week = today.get(Calendar.WEEK_OF_MONTH);
-	
+	out.print(today.getTime()); // Tues
+	int week = today.get(Calendar.DAY_OF_WEEK); //3
+	out.print(week);
 	//out.print(day + "<br>");
 	//out.print(lastDay + "<br>");
 	//out.print(startDay + "<br>");
@@ -47,13 +48,24 @@
 			</thead>
 			<tbody>
 				<%
-					for (int i = 1; i < week; i++){
-						out.print("<br>");
-					}
-					for (int i = 1; i <= lastDay; i++) {
+					
+					for (int i = 1; i <= lastDay; i++) { // 마지막날 31까지 반복
 						
 						if (week % 7 == 0 ){
-							out.print("<br>");
+							out.print("<br	>");
+						}
+						today.add(Calendar.DATE, 1);
+						for (int j = 0 ; j < week; j++) {
+							out.print(" ");
+						}
+						for (int i = 0; i < = lastDay; i++) {
+		
+						}
+						switch (week) {
+						case 3: 
+						%>
+							<td><%= i %></td>
+						<% 
 						}
 				%>
 				<tr>

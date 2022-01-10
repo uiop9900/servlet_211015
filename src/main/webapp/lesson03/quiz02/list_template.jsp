@@ -14,7 +14,7 @@
 </head>
 <style>
 header {height:80px;}
-header .search-bar {width: 450px;}
+
 .text {color: #000; font-weight: bold; }
 a: {color: #000;}
 a:hover {text-decoration: none;}
