@@ -25,10 +25,12 @@
 	today.set(2022,1,1); // 요일
 	out.print(today.getTime()); // Tues
 	int week = today.get(Calendar.DAY_OF_WEEK); //3
-	out.print(week);
-	//out.print(day + "<br>");
-	//out.print(lastDay + "<br>");
-	//out.print(startDay + "<br>");
+	out.print("<br>");
+	out.print(week + "<br>");
+	
+	out.print(day + "<br>"); //11-오늘날짜
+	out.print(lastDay + "<br>"); // 31
+	out.print(startDay + "<br>"); // 1
 	//out.print(month + "<br>");
 
 %>
@@ -49,36 +51,26 @@
 			<tbody>
 				<%
 					
-					for (int i = 1; i <= lastDay; i++) { // 마지막날 31까지 반복
+					for (int j = 0 ; j < week; j++) {
+						out.print("<br>");
+					}
 						
-						if (week % 7 == 0 ){
-							out.print("<br	>");
-						}
-						today.add(Calendar.DATE, 1);
-						for (int j = 0 ; j < week; j++) {
-							out.print(" ");
-						}
-						for (int i = 0; i < = lastDay; i++) {
-		
-						}
-						switch (week) {
-						case 3: 
+					for (int i = 1; i <= lastDay; i++) {
 						%>
-							<td><%= i %></td>
+						<tr>
 						<% 
-						}
-				%>
-				<tr>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-				</tr>
+						if ((week + i) % 7 == 0) {
+							out.print("<br>");
+						%>
+
+						<td><%= i %></td>
 				
 				<%
+						}
+						%>
+						</tr>
+						<% 
+						
 					}
 				%>
 			</tbody>
