@@ -23,11 +23,14 @@
 	int month = today.get(Calendar.MONTH);
 	
 	today.set(2022,1,1); // 요일
-	int week = today.get(Calendar.WEEK_OF_MONTH);
+	out.print(today.getTime()); // Tues
+	int week = today.get(Calendar.DAY_OF_WEEK); //3
+	out.print("<br>");
+	out.print(week + "<br>");
 	
-	//out.print(day + "<br>");
-	//out.print(lastDay + "<br>");
-	//out.print(startDay + "<br>");
+	out.print(day + "<br>"); //11-오늘날짜
+	out.print(lastDay + "<br>"); // 31
+	out.print(startDay + "<br>"); // 1
 	//out.print(month + "<br>");
 
 %>
@@ -47,26 +50,27 @@
 			</thead>
 			<tbody>
 				<%
-					for (int i = 1; i < week; i++){
+					
+					for (int j = 0 ; j < week; j++) {
 						out.print("<br>");
 					}
-					for (int i = 1; i <= lastDay; i++) {
 						
-						if (week % 7 == 0 ){
+					for (int i = 1; i <= lastDay; i++) {
+						%>
+						<tr>
+						<% 
+						if ((week + i) % 7 == 0) {
 							out.print("<br>");
-						}
-				%>
-				<tr>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-					<td><%= i %></td>
-				</tr>
+						%>
+
+						<td><%= i %></td>
 				
 				<%
+						}
+						%>
+						</tr>
+						<% 
+						
 					}
 				%>
 			</tbody>
