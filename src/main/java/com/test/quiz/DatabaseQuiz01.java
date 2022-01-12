@@ -16,29 +16,37 @@ import com.test.common.MysqlService;
 public class DatabaseQuiz01 extends HttpServlet {
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		response.setContentType("text/plain");
 		
 		// DB 연결
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connection();
-		
-		//insert 쿼리
-		String query = "insert into "
-		
-		//select 쿼리
-		String query = "select * from `real_estate` order by `id` desc limit 10";
-		PrintWriter out = response.getWriter();
+
+		// query수행
 		try {
-			ResultSet resultSet = mysqlService.select(query); // 쿼리 넣었음
+			//insert 쿼리
+			String insertQuery = "insert into `real_estate` (`realtorId`, `address`, `area`, `type`, `price`, `rentPrice`)"
+					+"values (3, '헤라펠리스 101동 5305호', 350, '매매', 1500000, NULL)";
+			mysqlService.update(insertQuery);
 			
+			//select 쿼리 -> 처리(출력)
+
+			String query = "select * from `real_estate` order by `id` desc limit 10";
+			ResultSet resultSet = mysqlService.select(query); // 쿼리 넣었음
+		
+			PrintWriter out = response.getWriter();
 			while(resultSet.next()) {
 				out.println("매물주소: " + resultSet.getString("address") + ", 면적: " + resultSet.getInt("area") + ", 타입: " + resultSet.getString("type"));
-
 			}
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
 		}
+		
+		//DB 연결 해제
 		mysqlService.disconnection();
 	}
 }
