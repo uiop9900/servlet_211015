@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Melong</title>
 
-	<!-- bootstrap 추가! -->
+<!-- bootstrap 추가! -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -20,15 +20,16 @@ a: {color: #000;}
 a:hover {text-decoration: none;}
 .font_20 {font:20px;}
 .font_15 {font: 15px; color:#555;}
+.info-text {font-size: 12px; color: #777;}
 </style>
-
 
 <body>
 	<div class="container">
 		<jsp:include page="header.jsp"/>		
 		<jsp:include page="menu.jsp"/>
-		<jsp:include page="list_content.jsp"/>
+		<jsp:include page="info_content.jsp"/>
 		<jsp:include page="footer.jsp"/>
 	</div>
+
 </body>
 </html>

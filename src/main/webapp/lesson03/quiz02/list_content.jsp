@@ -77,6 +77,7 @@ List<Map<String, Object>> musicList = new ArrayList<>();
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>
+
 <%-- 여기서 블록과 리스트 둘다 만든다. --%>
 <%-- 블록 --%>
 <section>
@@ -111,7 +112,7 @@ List<Map<String, Object>> musicList = new ArrayList<>();
 				%>
 			<tr>
 				<td><%= item.get("id") %></td>
-				<td><a href="template.jsp?id=<%= item.get("id")%>"><%= item.get("title") %></a></td>
+				<td><a href="info_template.jsp?id=<%= item.get("id")%>"><%= item.get("title") %></a></td>
 				<td><%= item.get("album") %></td>
 			</tr>
 			<%
