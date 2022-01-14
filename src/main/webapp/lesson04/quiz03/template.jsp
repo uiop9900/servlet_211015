@@ -15,6 +15,7 @@
 header {height: 100px;}
 nav {height: 50px;}
 .bg-carroit {background-color: #FF7F50;}
+.content-box:hover {background-color: #F5AF64;}
 .border-carroit {border-style: solid; border-color: #FF7F50; width: 350px;}
 .text-carroit {color: #FF7F50;}
 </style>

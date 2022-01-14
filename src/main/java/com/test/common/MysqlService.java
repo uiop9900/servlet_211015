@@ -11,7 +11,7 @@ public class MysqlService { //하나의 객체로만 이용할 수 있도록 - �
 	private static MysqlService mysqlService = null; // static: 메모리에 올려놓고 시작하는 것
 	
 	//도메인 뒤에 접속할 datebase명까지 써준다.
-	private String url = "jdbc:mysql://localhost:3306/boram_211015"; //DB는 jdbc ,3306은 DB서버, 8080은 웹 서버
+	private String url = "jdbc:mysql://localhost:3306/jialee_1011"; //DB는 jdbc ,3306은 DB서버, 8080은 웹 서버
 	private String id = "root";
 	private String pw = "root";
 	

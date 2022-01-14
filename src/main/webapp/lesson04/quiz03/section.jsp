@@ -6,9 +6,8 @@
 <%
 	MysqlService mysql = MysqlService.getInstance();
 	mysql.connection();
-	//select *
 	
-	String selectQuery = "select A.*, B.* from `used_goods` as A join `seller` as B on A.sellerId = B.id order by A.id desc";
+	String selectQuery = "select A.*, B.* from `used_goods` as A join `seller` as B	on A.sellerId = B.id order by A.id desc;";
 	ResultSet result = mysql.select(selectQuery);
 	
 %>
@@ -19,15 +18,16 @@
 	
 <%
 	while(result.next()) {
-		String picUrl = result.getString("A.picture");
-			if (picUrl == null) {
-				picUrl = "https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif";
-%>
+		String picture = result.getString("A.picture");
+			if (picture == null) {
+				picture = "https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif";
+				}
+%>	
 	
 		<!-- 한 상자 -->
-		<div class="border-carroit mt-2 p-2">
+		<div class="content-box border-carroit mt-2 p-2">
 			<div>
-				<img src="<%= picUrl %>" alt="사진1" width="330">
+				<img src="<%= picture %>" alt="사진1" width="330" height="180">
 			</div>
 			<div class="mt-1 font-weight-bold"><%= result.getString("A.title") %> </div>
 			<small class="text-secondary"><%= result.getInt("A.price") %> </small>
@@ -35,7 +35,7 @@
 		</div>	
 	
 <%
-			}
+			
 	}
 %>
 
