@@ -24,8 +24,8 @@
 		<div class="d-flex justify-content-around">
 			<%--아이디 --%>
 			<div class="col-3">
-				<select class="form-control" name="sellerId">
-					<option value="">-아이디 선택-</option>
+				<select class="form-control" id="sellerId" name="sellerId">
+					<option value="default">-아이디 선택-</option>
 <% 
 			// 출력
 				while (result.next()) {
@@ -56,7 +56,7 @@
 		
 		<%-- 2nd row --%>
 		<div class="mt-4">
-			<textarea class="form-control" rows="5" cols="18" placeholder="설명" id="description" id="description" name="description"></textarea>
+			<textarea class="form-control" rows="5" cols="18" placeholder="설명" id="description" name="description"></textarea>
 		</div>
 		
 		<%-- 3rd row --%>

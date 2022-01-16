@@ -43,10 +43,8 @@
 				let sellerId = $("select[name=sellerId]").val();
 				let title = $("#title").val();
 				let price = $("#price").val();
-				let description = $("#description").val();
-				let picture = $("#picture").val();
 				
-				if (sellerId == "") {
+				if (sellerId == "default") {
 					alert("닉네임을 선택하세요.");
 					return;
 				}
@@ -55,14 +53,6 @@
 					return;
 				}
 				if (price == "") {
-					alert("제목을 기입하세요.");
-					return;
-				}
-				if (description == "") {
-					alert("제목을 기입하세요.");
-					return;
-				}
-				if (picture == "") {
 					alert("제목을 기입하세요.");
 					return;
 				}

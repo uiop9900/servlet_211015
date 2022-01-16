@@ -19,9 +19,9 @@ public class DatabaseQuiz03Insert extends HttpServlet {
 		MysqlService mysql = MysqlService.getInstance();
 		mysql.connection();
 		//파라미터 가져오기
-		int sellerId = Integer.valueOf(request.getParameter("sellerId"));
+		String sellerId = request.getParameter("sellerId");
 		String title = request.getParameter("title");
-		int price = Integer.parseInt(request.getParameter("nickname"));
+		String price = request.getParameter("price");
 		String description = request.getParameter("description");
 		String picture = request.getParameter("picture");
 		
@@ -30,7 +30,7 @@ public class DatabaseQuiz03Insert extends HttpServlet {
 		
 		// insert문
 		String insertQuery = "insert into `used_goods` (`sellerId`, `title`, `description`, `price`, `picture`) "
-				+ "vlaues (" + sellerId + ", '" + title + "', '" + description + "', " + price + ", '" + picture + "')";
+				+ "values (" + sellerId + ", '" + title + "', '" + description + "', " + price + ", '" + picture + "')";
 		
 		try {
 			mysql.update(insertQuery);
@@ -42,6 +42,6 @@ public class DatabaseQuiz03Insert extends HttpServlet {
 		// db 해지
 		mysql.disconnection();
 		// 리다이렉트 template으로.
-		response.sendRedirect("/lesson04/quiz03/template_insert.jsp");	
+		response.sendRedirect("/lesson04/quiz03/template.jsp");	
 	}
 }
