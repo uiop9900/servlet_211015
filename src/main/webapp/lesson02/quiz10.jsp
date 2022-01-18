@@ -16,26 +16,22 @@
 </head>
 <body>
 <%
+	// head에 넣을 yyyy-MM
 	Calendar today = Calendar.getInstance();
-	int day = today.get(Calendar.DAY_OF_MONTH);
-	int lastDay = today.getActualMaximum(Calendar.DATE);
-	int startDay = today.getActualMinimum(Calendar.DATE);
-	int month = today.get(Calendar.MONTH);
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+	String thisMonth = sdf.format(today.getTime());
 	
-	today.set(2022,1,1); // 요일
-	out.print(today.getTime()); // Tues
-	int week = today.get(Calendar.DAY_OF_WEEK); //3
-	out.print("<br>");
-	out.print(week + "<br>");
-	
-	out.print(day + "<br>"); //11-오늘날짜
-	out.print(lastDay + "<br>"); // 31
-	out.print(startDay + "<br>"); // 1
-	//out.print(month + "<br>");
+	// 첫 날
+	Calendar Date = Calendar.getInstance();
+	Date.set(Calendar.DAY_OF_MONTH, 1);
 
+	// 첫 요일 // 3:화
+	int firstDay = Date.get(Calendar.DAY_OF_WEEK);
+	int lastDay = Date.getActualMaximum(Calendar.DATE);
+	
 %>
 	<div class="container">
-		<h1 class="text-center">2022-01</h1>
+		<h1 class="text-center"><%= thisMonth %></h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -50,28 +46,28 @@
 			</thead>
 			<tbody>
 				<%
-					
-					for (int j = 0 ; j < week; j++) {
-						out.print("<br>");
-					}
+				int week = Date.get(Calendar.WEEK_OF_MONTH); // 주
+				int day = 1 - (firstDay - 1);
+				for (int i = 0; i < week; i++) { // 주마다
+					out.print("<tr>");
+					for (int j = 0; j < 7; j++) { // 일마다
+						out.print("<td>");
+						if (day > 0) {
+							out.print(day);
 						
-					for (int i = 1; i <= lastDay; i++) {
-						%>
-						<tr>
-						<% 
-						if ((week + i) % 7 == 0) {
-							out.print("<br>");
-						%>
-
-						<td><%= i %></td>
-				
-				<%
 						}
-						%>
-						</tr>
-						<% 
-						
+						out.print("</td>");
+						day++;
+						if (day > lastDay) {
+							break;
+						}
 					}
+					if (day > lastDay) {
+						break;
+					}
+					out.print("</tr>");
+				}
+				
 				%>
 			</tbody>
 		</table>
